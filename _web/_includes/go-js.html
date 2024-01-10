@@ -43,9 +43,9 @@
         computedThreshold: 0,   // computed best threshold
         currentThreshold: 0,    // current in-use max threshold
         addLastEdge: true,      // if true, optimize by adding a good last edge
-        justBackwards: false,   // if true, only add backward branches
-        justLongBranches: false,// if true, only add long branches
-        removeSequentialBranches: false,// if true, remove consecutive branches of the same distance
+        justBackwards: {{ site.data.config.justBackwards }},   // if true, only add backward branches
+        justLongBranches: {{ site.data.config.justLongBranches }},// if true, only add long branches
+        removeSequentialBranches: {{ site.data.config.removeSequentialBranches }},// if true, remove consecutive branches of the same distance
 
         deletedEdgeCount: 0,    // number of edges that have been deleted
 
@@ -554,9 +554,9 @@
         undeleteAllEdges();
 
         jukeboxData.addLastEdge = true;
-        jukeboxData.justBackwards = false;
-        jukeboxData.justLongBranches = false;
-        jukeboxData.removeSequentialBranches = false;
+        jukeboxData.justBackwards = {{ site.data.config.justBackwards }};
+        jukeboxData.justLongBranches = {{ site.data.config.justLongBranches }};
+        jukeboxData.removeSequentialBranches = {{ site.data.config.removeSequentialBranches }};
         jukeboxData.currentThreshold = jukeboxData.computedThreshold;
         jukeboxData.minRandomBranchChance = defaultMinRandomBranchChance;
         jukeboxData.maxRandomBranchChance = defaultMaxRandomBranchChance;
@@ -595,14 +595,20 @@
 
             if (jukeboxData.justBackwards) {
                 p += '&jb=1'
+            }else{
+                p += '&jb=0'
             }
 
             if (jukeboxData.justLongBranches) {
                 p += '&lg=1'
+            }else{
+                p += '&lg=0'
             }
 
             if (jukeboxData.removeSequentialBranches) {
                 p += '&sq=0'
+            }else{
+                p += '&sq=1'
             }
 
             if (jukeboxData.currentThreshold !== jukeboxData.computedThreshold) {

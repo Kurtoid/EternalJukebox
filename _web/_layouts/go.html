@@ -96,11 +96,11 @@ buttons:
             <div class="l-cb" id="l-last-branch"> Loop extension optimization: <input id="last-branch" checked="checked"
                                                                                       type="checkbox"></div>
             <div class="l-cb" id="l-reverse-branch"> Allow only reverse branches : <input id="reverse-branch"
-                                                                                          type="checkbox"></div>
-            <div class="l-cb" id="l-long-branch"> Allow only long branches : <input id="long-branch" type="checkbox">
-            </div>
+                                                                                          type="checkbox" {% if site.data.config.justBackwards %}checked="checked"{% endif %}></div>
+            <div class="l-cb" id="l-long-branch"> Allow only long branches : <input id="long-branch" type="checkbox"
+                                                                                    {% if site.data.config.justLongBranches %}checked="checked"{% endif %}></div>
             <div class="l-cb" id="l-sequential-branch"> Remove sequential branches: <input id="sequential-branch"
-                                                                                           type="checkbox"></div>
+                                                                                           type="checkbox" {% if site.data.config.removeSequentialBranches %}checked="checked"{% endif %}></div>
             <div class="l-cb" id="l-disable-keys"> Disable Keypresses: <input id="disable-keys" type="checkbox"></div>
             <div class="l-cb" id="l-audio-url">Audio URL: <input id="audio-url" type="url"></div>
             <br>
